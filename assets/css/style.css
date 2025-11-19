@@ -195,27 +195,25 @@ nav .btn-yellow {
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
 }
-/* ===== Final tweaks: crest left, perfectly centered titles, centered nav, pill pinned right ===== */
-/* Paste this at the end of your existing CSS file. Desktop-first. */
-
-/* Make header grid and tighten left padding so crest sits further left */
-.header {
+ .header {
+  /* keep grid layout but ensure absolute positioning uses header as reference */
   display: grid;
-  grid-template-columns: auto 1fr auto; /* left crest | center titles | right spacer (unused) */
-  grid-template-rows: auto auto;         /* row1: titles, row2: nav */
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto auto;
   align-items: start;
   gap: 6px 24px;
-  padding: 8px 8px 10px 8px;            /* reduced padding so crest hugs left more */
+  padding: 8px 8px 10px 8px;
   background: var(--blue);
   color: #fff;
   border-bottom: 4px solid var(--yellow);
+  position: relative; /* required so absolute children position relative to header */
 }
 
-/* Crest (larger) — spans both rows and hugs left */
+/* crest slightly smaller so the titles fit more comfortably */
 .header img.logo {
   grid-column: 1 / 2;
   grid-row: 1 / 3;
-  height: 220px;        /* current size — change to 200/240 if you want */
+  height: 200px;   /* changed from 220 -> 200 */
   width: auto;
   align-self: start;
   margin: 0;
@@ -223,116 +221,69 @@ nav .btn-yellow {
   object-fit: contain;
 }
 
-/* Titles centered in the middle column */
+/* titles remain centered */
 .site-title {
   grid-column: 2 / 3;
   grid-row: 1 / 2;
   text-align: center;
   align-self: start;
   padding-top: 10px;
-  min-width: 0;
 }
 
-/* Big first line (white) */
-.site-title h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800;
-  font-size: 56px;   /* adjust if you want a little larger/smaller */
-  margin: 0;
-  color: #fff;
-  letter-spacing: -1px;
-  line-height: 1;
-  text-shadow: 0 1px 0 rgba(0,0,0,0.12);
-}
-
-/* Second stacked line (yellow) */
-.site-title p {
-  margin: 6px 0 0 0;
-  font-size: 40px;
-  font-weight: 700;
-  color: var(--yellow);
-  opacity: .98;
-  line-height: 1;
-  font-family: 'Montserrat', sans-serif;
-}
-
-/* tagline below the two big lines if present */
-.site-title .tagline,
-.site-title small {
-  display:block;
-  margin-top:8px;
-  font-size:14px;
-  color: rgba(255,255,255,0.85);
-  font-weight:400;
-}
-
-/* Nav row spans full width under the titles, position:relative so we can absolutely place elements inside */
+/* nav row spans full width under the titles */
 nav {
   grid-column: 1 / 4;
   grid-row: 2 / 3;
-  position: relative;       /* required for absolute positioning of menu & pill */
-  height: 64px;             /* give a consistent row height */
-  align-items: center;
-  display: block;
+  height: 64px;
   padding: 10px 6px 12px;
   background: transparent;
+  display: block; /* we'll center the UL inside it */
+  position: relative;
 }
 
-/* Center the nav menu by absolutely centering the UL inside nav */
-nav .nav-list,
-nav ul {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+/* center the nav menu using auto margins and inline-flex width */
+nav ul,
+nav .nav-list {
   display: inline-flex;
   gap: 28px;
-  margin: 0;
+  margin: 0 auto; /* centers the whole UL within the nav */
   padding: 0;
   list-style: none;
   align-items: center;
   justify-content: center;
 }
 
-/* Nav links */
+/* nav links */
 nav a {
-  color:#fff;
-  text-decoration:none;
-  font-weight:700;
-  font-size:18px;
-  padding:6px 0;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 6px 0;
 }
 
-/* Pin the yellow pill to the far right of the header row */
-/* adjust 'right' value if you want more/less space from the edge */
+/* pin the yellow pill to the far right of the header (outside the centered nav) */
 .btn-yellow,
 nav .btn-yellow {
   position: absolute;
-  right: 20px;          /* space from right edge of header */
-  top: 50%;
-  transform: translateY(-50%);
+  right: 20px;           /* distance from the right edge of header/container */
+  bottom: 16px;          /* vertical position inside the nav row */
   background: var(--yellow);
   color: var(--blue);
   padding: 8px 14px;
   border-radius: 10px;
-  font-weight:800;
+  font-weight: 800;
   box-shadow: 0 2px 0 rgba(0,0,0,0.06);
   text-decoration: none;
   font-size: 16px;
   white-space: nowrap;
 }
 
-/* small safety: keep crest from overflowing at narrower widths */
+/* responsive safety */
 @media (max-width: 1200px) {
-  .header img.logo { height: 180px; }
+  .header img.logo { height: 160px; }
   .site-title h1 { font-size: 44px; }
-  .site-title p { font-size: 28px; }
-}
-
-/* optional: tuning for very wide screens — keep everything balanced */
-@media (min-width: 1600px) {
-  .site-title h1 { font-size: 68px; }
-  .site-title p { font-size: 48px; }
+  .site-title p { font-size: 26px; }
 }
 
 
