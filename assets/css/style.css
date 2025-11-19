@@ -17,7 +17,7 @@ html,body{font-family:Roboto, Arial, sans-serif;background:var(--light);color:#1
 /* Nav */
 nav{margin-left:auto}
 nav a{color:#fff;text-decoration:none;margin-left:18px;font-weight:600}
-.btn-yellow{background:var(--yellow);color:var(--blue);padding:8px 12px;border-radius:6px;text-decoration:none;font-weight:700;}
+.btn-yellow{background:var(--yellow);color:var(--blue);padding:3px 12px;border-radius:6px;text-decoration:none;font-weight:700;}
 
 /* Hero */
 .hero{background:#fff;padding:30px;border-radius:8px;margin:18px 0;display:flex;gap:24px;align-items:center}
