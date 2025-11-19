@@ -49,54 +49,6 @@ nav a{color:#fff;text-decoration:none;margin-left:18px;font-weight:600}
 /* Responsive */
 @media(max-width:800px){.hero{flex-direction:column}.header{flex-wrap:wrap}nav{margin-top:10px;width:100%;text-align:right}nav a{margin-left:8px}}
 
-/* --- Header: larger logo and left alignment tweaks --- */
-/* Add this at the end of your stylesheet to override the earlier header rules */
-
-.header {
-  align-items: flex-start;    /* align items to top so big logo sits nicely */
-  gap: 12px;                  /* tighten gap so logo sits closer to titles */
-  padding: 12px 12px 18px;    /* reduce left/right padding so logo moves left */
-}
-
-/* Make the logo bigger */
-.header img.logo {
-  height: 120px;    /* <-- change this value to 140px or 100px to taste */
-  width: auto;      /* preserve aspect ratio */
-  margin-top: 2px;  /* small nudge to vertically align with title top */
-  margin-right: 12px;
-  display: block;
-}
-
-/* Slightly larger title + tagline to balance new logo */
-.site-title h1 {
-  font-size: 34px;   /* originally 20px — increase to suit new logo */
-  line-height: 1;
-  margin-top: 4px;
-}
-
-.site-title p {
-  font-size: 15px;   /* slightly larger subtitle */
-  margin-top: 6px;
-  opacity: 0.95;
-}
-
-/* Keep nav visually aligned to the bottom of the title block */
-nav {
-  margin-left: auto;
-  align-self: flex-end;
-}
-
-/* Small responsive safety: if you later enable mobile, this prevents overflow */
-@media (max-width: 1100px) {
-  .header img.logo { height: 100px; } /* scale down on narrower screens */
-  .site-title h1 { font-size: 28px; }
-}
-
-
-
-
-
-
 /* ===== Desktop header redesign: big crest left, centered stacked titles, centered nav, yellow pill right ===== */
 /* Paste at the end of your existing CSS so these rules override earlier ones. Desktop only. */
 
@@ -243,3 +195,7 @@ nav .btn-yellow {
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
 }
+
+
+
+
