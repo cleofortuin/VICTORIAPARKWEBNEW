@@ -1,149 +1,193 @@
+/* Victoria Park Primary — DESKTOP ONLY stylesheet
+   Replace your existing assets/css/style.css with this file.
+   Desktop-focused: no responsive/mobile rules included.
+*/
 
-/* Victoria Park Primary - Modern Theme */
+/* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;700&display=swap');
 
-:root{--blue:#131147;--yellow:#F7F70E;--light:#F7F5F3;--red:#F10606;}
+/* Theme Colors */
+:root{
+  --blue: #131147;
+  --yellow: #F7F70E;
+  --light: #F7F5F3;
+  --accent: #222;
+  --header-logo-h: 180px;   /* crest height on desktop - adjust 160–200 if needed */
+  --site-title-top: 28px;   /* vertical offset for the centered title */
+  --nav-top: 150px;         /* vertical offset for nav row */
+  --site-header-reserve: calc(var(--header-logo-h) + 100px); /* space reserved for header */
+}
+
+/* Reset */
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{font-family:Roboto, Arial, sans-serif;background:var(--light);color:#111;line-height:1.5}
-.container{max-width:1100px;margin:0 auto;padding:20px}
 
-/* Header */
-.header{background:var(--blue);color:#fff;display:flex;align-items:center;gap:20px;padding:18px 20px;border-bottom:4px solid var(--yellow)}
-.header img.logo{height:64px}
-.site-title{font-family:Montserrat, sans-serif}
-.site-title h1{font-size:20px;line-height:1}
-.site-title p{opacity:0.9;font-size:13px;margin-top:4px}
+/* Base */
+html,body{font-family:'Roboto', Arial, sans-serif;background:var(--light);color:#111;line-height:1.5}
+.container{max-width:1200px;margin:0 auto;padding:20px}
 
-/* Nav */
-nav{margin-left:auto}
-nav a{color:#fff;text-decoration:none;margin-left:18px;font-weight:600}
-.btn-yellow{background:var(--yellow);color:var(--blue);padding:3px 12px;border-radius:6px;text-decoration:none;font-weight:700;}
+/* ---------- Header (desktop-only) ---------- */
+.header{
+  background:var(--blue);
+  color:#fff;
+  width:100%;
+  position:relative;
+  z-index:9999;
+}
 
-/* Hero */
-.hero{background:#fff;padding:30px;border-radius:8px;margin:18px 0;display:flex;gap:24px;align-items:center}
+/* header container */
+.header .container{
+  max-width:1200px;
+  margin:0 auto;
+  padding:18px 28px 10px 28px;
+  position:relative;
+  box-sizing:border-box;
+}
+
+/* top row holder - keep simple */
+.header-top{display:block}
+
+/* crest / logo on left */
+.header .logo{
+  height:var(--header-logo-h);
+  width:auto;
+  object-fit:contain;
+  float:left;
+  margin:0 28px 0 0;
+  display:block;
+}
+
+/* centered title block - absolute positioning so it always remains centered */
+.site-title{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  top:var(--site-title-top);
+  text-align:center;
+  z-index:5;
+  display:block;
+  width:auto;
+}
+
+/* title typography */
+.school-af{
+  font-family:'Montserrat',sans-serif;
+  font-size:56px;    /* Afrikaans name larger */
+  font-weight:800;
+  color:#fff;
+  line-height:1;
+  margin:0;
+}
+.school-en{
+  font-family:'Montserrat',sans-serif;
+  font-size:42px;    /* English name below */
+  font-weight:700;
+  color:var(--yellow);
+  margin:0;
+  line-height:1;
+}
+.tagline{
+  font-family:'Roboto',sans-serif;
+  font-size:14px;
+  color:rgba(255,255,255,0.92);
+  margin-top:8px;
+}
+
+/* nav row - centered under title */
+.main-nav{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  top:var(--nav-top);
+  display:flex;
+  gap:36px;
+  justify-content:center;
+  align-items:center;
+  white-space:nowrap;
+  z-index:4;
+}
+
+/* nav links */
+.main-nav a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:700;
+  font-size:20px;
+  display:inline-block;
+  padding:6px 2px;
+}
+
+/* highlighted kontak button pinned to right of header container */
+.main-nav .btn-yellow{
+  position:absolute;
+  right:24px;
+  top:-6px;                /* slight nudge to align with nav row */
+  background:var(--yellow);
+  color:var(--blue);
+  padding:10px 18px;
+  border-radius:10px;
+  font-weight:800;
+  text-decoration:none;
+  display:inline-block;
+  box-shadow:0 2px 0 rgba(0,0,0,0.06) inset;
+}
+
+/* thin yellow divider under header */
+.header-bottom-line{
+  height:6px;
+  background:var(--yellow);
+  width:100%;
+  margin-top:6px;
+  box-shadow:0 1px 0 rgba(0,0,0,0.06) inset;
+}
+
+/* ---------- Main / content spacing safety ---------- */
+/* Ensure the page content starts below the header so there is no overlap */
+main.container,
+.content-container,
+.page-wrapper > .container{
+  margin-top: var(--site-header-reserve) !important;
+}
+
+/* safety for pages where .section or .hero is direct child of body */
+body > .section,
+body > .hero{
+  margin-top: calc(var(--site-header-reserve) - 40px) !important;
+}
+
+/* ---------- Site sections kept from your theme ---------- */
+/* Hero section (left large logo on homepage) */
+.hero{
+  background:#fff;
+  padding:30px;
+  border-radius:8px;
+  margin:18px 0;
+  display:flex;
+  gap:30px;
+  align-items:center;
+  flex-direction:row;
+}
+.hero .hero-image{order:-1}
+.hero .hero-image img{max-width:350px;width:100%;height:auto}
 .hero .hero-text{flex:1}
-.hero h2{font-family:Montserrat;font-size:26px;color:var(--blue);margin-bottom:8px}
+.hero h2{font-family:'Montserrat',sans-serif;font-size:28px;color:var(--blue);margin-bottom:8px}
 .hero p{color:#333}
-.hero .hero-image img{max-width:320px;border-radius:8px}
 
-/* Info boxes */
+/* Cards, values, sections */
 .info-row{display:flex;gap:16px;margin:16px 0}
 .card{background:#fff;padding:18px;border-radius:8px;flex:1;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
-.card h3{color:var(--blue);font-family:Montserrat}
-
-/* Values strip */
+.card h3{color:var(--blue);font-family:'Montserrat',sans-serif}
 .values{background:var(--blue);color:#fff;padding:14px;border-radius:6px;margin:12px 0;text-align:center;font-weight:700}
-
-/* Two column layouts for pages */
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:16px 0}
 .section{background:#fff;padding:18px;border-radius:8px}
-
-/* Staff grid */
-.staff-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.staff-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .staff-card{background:#fff;padding:12px;border-radius:8px;text-align:center}
 .staff-card img{width:100%;height:140px;object-fit:cover;border-radius:6px}
 
 /* Footer */
 .footer{text-align:center;color:#444;padding:18px;margin-top:18px}
 
-/* Responsive */
-@media(max-width:800px){.hero{flex-direction:column}.header{flex-wrap:wrap}nav{margin-top:10px;width:100%;text-align:right}nav a{margin-left:8px}}
+/* ---------- Utility: small visual tuning (optional) ---------- */
+/* make link outlines clear (keyboard users) */
+a:focus{outline:3px solid rgba(255,247,50,0.25);outline-offset:2px}
 
-/* ===== FINAL FORCE: center title & nav, crest left =====
-   This block overrides any previous header rules and centers
-   the school title & nav while keeping the logo at the far left.
-   If the vertical spacing is slightly off, change the two numbers
-   -- --site-title-top and --nav-top -- explained below.
-*/
-:root{
-  --header-logo-h: 220px;   /* change this to scale crest */
-  --site-title-top: 18px;   /* distance from top of header to title (adjust if needed) */
-  --nav-top: 130px;         /* distance from top of header to nav (adjust if needed) */
-}
-
-/* container baseline and stacking context */
-.header { background: var(--blue) !important; color: #fff !important; width: 100% !important; }
-.header .container { max-width: 1200px !important; margin: 0 auto !important; padding: 12px 20px 6px 20px !important; position: relative !important; box-sizing: border-box !important; }
-
-/* crest - forced left */
-.header .logo {
-  height: var(--header-logo-h) !important;
-  width: auto !important;
-  object-fit: contain !important;
-  display: block !important;
-  float: left !important;
-  margin: 0 24px 0 0 !important;
-}
-
-/* remove any flexting interference on top row */
-.header-top { display: block !important; }
-
-/* TITLE: absolutely center the title over the header area */
-.site-title {
-  position: absolute !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  top: var(--site-title-top) !important;
-  text-align: center !important;
-  width: auto !important;
-  z-index: 5 !important;
-  display: block !important;
-}
-
-/* force headings style */
-.site-title .school-af, .site-title .school-en, .site-title .tagline {
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* NAV: absolutely center the nav row directly under the title */
-.main-nav {
-  position: absolute !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  top: var(--nav-top) !important;
-  display: flex !important;
-  gap: 32px !important;
-  justify-content: center !important;
-  align-items: center !important;
-  white-space: nowrap !important;
-  z-index: 4 !important;
-}
-
-/* nav links */
-.main-nav a {
-  color: #fff !important;
-  text-decoration: none !important;
-  font-weight: 700 !important;
-  font-size: 20px !important;
-  padding: 6px 2px !important;
-  display: inline-block !important;
-}
-
-/* Kontak button - pinned to right edge of container (keeps same visual as design) */
-.main-nav .btn-yellow {
-  position: absolute !important;
-  right: 16px !important;
-  top: -6px !important; /* nudge so it visually aligns with nav row */
-  background: var(--yellow) !important;
-  color: var(--blue) !important;
-  padding: 10px 16px !important;
-  border-radius: 10px !important;
-  font-weight: 800 !important;
-  text-decoration: none !important;
-  display: inline-block !important;
-}
-
-/* thin yellow bottom rule */
-.header-bottom-line { height: 6px !important; background: var(--yellow) !important; width: 100% !important; margin-top: 6px !important; }
-
-/* Responsive behaviour: switch to stacked layout on small screens */
-@media (max-width: 850px) {
-  :root{ --header-logo-h: 120px; --site-title-top: 8px; --nav-top: 220px; }
-  .header .logo { float: none !important; display:block !important; margin: 0 auto 8px auto !important; }
-  .site-title { position: static !important; transform:none !important; margin: 0 auto 6px auto !important; }
-  .main-nav { position: static !important; transform:none !important; margin-top: 8px !important; gap: 14px !important; flex-wrap: wrap !important; justify-content: center !important; }
-  .main-nav .btn-yellow { position: static !important; order: 999 !important; display:block !important; width: 90% !important; margin: 12px auto 0 !important; }
-}
-
-/* end override */
+/* ---------- End of desktop-only stylesheet ---------- */
