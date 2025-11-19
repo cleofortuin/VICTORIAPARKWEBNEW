@@ -91,3 +91,155 @@ nav {
   .header img.logo { height: 100px; } /* scale down on narrower screens */
   .site-title h1 { font-size: 28px; }
 }
+
+
+
+
+
+
+/* ===== Desktop header redesign: big crest left, centered stacked titles, centered nav, yellow pill right ===== */
+/* Paste at the end of your existing CSS so these rules override earlier ones. Desktop only. */
+
+:root {
+  --vp-blue: #131147;
+  --vp-yellow: #F7F70E;
+  --max-width: 1100px; /* matches your .container */
+}
+
+/* Make header use grid so we can center titles and place nav beneath */
+.header {
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* crest | titles (center column stretches) | right spacer */
+  grid-template-rows: auto auto;         /* row1: titles row, row2: nav row */
+  align-items: start;
+  gap: 6px 24px;
+  padding: 12px 18px 10px; /* tighten horizontal padding so crest sits left */
+  background: var(--vp-blue);
+  color: #fff;
+  border-bottom: 4px solid var(--vp-yellow);
+}
+
+/* Left: crest/logo — place in first column, first row */
+.header img.logo {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;      /* span both rows so crest sits tall on left */
+  height: 220px;        /* big crest — change to 200px/240px as needed */
+  width: auto;
+  align-self: start;
+  margin: 0;            /* hug left inside the container */
+  display: block;
+  object-fit: contain;
+}
+
+/* Center column: site titles — place in middle column, first row */
+.site-title {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  text-align: center;   /* center the stacked titles */
+  align-self: start;
+  padding-top: 8px;
+  min-width: 0;
+}
+
+/* Style the two stacked lines (h1 + p). We make h1 large white and p large yellow like your image */
+.site-title h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 56px;      /* main big line */
+  margin: 0;
+  color: #ffffff;
+  letter-spacing: -1px;
+  line-height: 1;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+}
+
+.site-title p {
+  margin: 6px 0 0 0;
+  font-size: 40px;      /* second large line in yellow */
+  font-weight: 700;
+  color: var(--vp-yellow);
+  opacity: 0.95;
+  line-height: 1;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* small tagline below (if present) — keeps it centered */
+.site-title .tagline,
+.site-title small {
+  display: block;
+  margin-top: 8px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.85);
+  font-weight: 400;
+}
+
+/* Navigation row: occupies second grid row, spans all columns so it centers under the titles */
+nav {
+  grid-column: 1 / 4;   /* full width */
+  grid-row: 2 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* center the nav list in the row */
+  gap: 24px;
+  padding: 14px 6px 10px 6px;
+  background: transparent;
+}
+
+/* Nav list - we center it visually by making it inline-flex and spacing items */
+nav .nav-list,
+nav ul,
+nav ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  gap: 28px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* If your nav links are direct children of nav (no .nav-list), these rules still apply */
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 6px 0;
+}
+
+/* The yellow pill (Kontak Ons) - align visually to the right */
+.btn-yellow,
+nav .btn-yellow {
+  background: var(--vp-yellow);
+  color: var(--vp-blue);
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: 800;
+  display: inline-block;
+  margin-left: 28px;   /* space from nav items */
+  box-shadow: 0 2px 0 rgba(0,0,0,0.06);
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* Make sure the right-hand space for the pill is available inside the centered row */
+/* We center the menu but allow the pill to visually sit to the right by giving the menu inline layout — no further positioning required */
+
+/* Thin yellow divider across full width (if you prefer below the header like the screenshot) */
+.header + .divider,
+.header:after {
+  /* We add an explicit element in case you don't have one; but if you already have a yellow border with border-bottom then this is optional */
+}
+
+/* Override earlier small responsive rules so nothing collapses on desktop */
+@media (max-width: 1100px) {
+  /* smaller screens: scale crest down to avoid overflow (you said desktop only but just in case) */
+  .header img.logo { height: 160px; }
+  .site-title h1 { font-size: 36px; }
+  .site-title p { font-size: 26px; }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
