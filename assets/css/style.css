@@ -541,4 +541,24 @@ nav .btn-yellow{
 }
 
 /* Center the Kontak Ons pill vertically with nav links */
-.main-nav .
+.main-nav .btn-yellow {
+  bottom: 18px !important;   /* lift higher */
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+/* Remove accidental yellow bar on top-right */
+.header-bottom-line {
+  margin-top: 0 !important;
+  height: 4px !important;
+  background: var(--vp-yellow) !important;
+  width: 100% !important;
+  position: relative;
+  top: 0;
+}
+
+/* OPTIONAL: If the yellow shape above the header persists */
+.header::before {
+  content: "";
+  display: none !important;
+}
