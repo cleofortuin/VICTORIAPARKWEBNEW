@@ -530,3 +530,15 @@ nav .btn-yellow{
   .site-title h1{font-size:40px}
   .site-title p{font-size:26px}
 }
+
+/* ==== FINAL TUNING: NAV LIFT + PILL ALIGN + REMOVE YELLOW BAR ==== */
+
+/* Slightly lift the nav row up closer to the headline */
+.main-nav {
+  padding-top: 4px !important;
+  padding-bottom: 6px !important;
+  height: 68px !important; /* was 80 */
+}
+
+/* Center the Kontak Ons pill vertically with nav links */
+.main-nav .
