@@ -562,3 +562,136 @@ nav .btn-yellow{
   content: "";
   display: none !important;
 }
+
+/* ===== Final fix: truly centered title + pinned Kontak Ons (no HTML change) ===== */
+
+/* ensure we reference same container width used by your site */
+:root {
+  --vp-blue: #131147;
+  --vp-yellow: #F7F70E;
+  --container-max: 1100px; /* must match your .container max-width */
+}
+
+/* Make header-top a relative positioned block so we can absolutely place the crest */
+.header .header-top {
+  display: block;              /* stop using grid for the top row */
+  position: relative;          /* anchor for absolute logo */
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 18px 24px 8px 24px; /* same as before */
+}
+
+/* Absolutely place the crest on the left inside the container */
+.header .header-top img.logo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 180px;               /* tuned value (change to 200/220 if you prefer) */
+  width: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0;
+  z-index: 3;
+}
+
+/* Hide the spacer element — not needed when crest is absolute */
+.header .header-top .logo-spacer {
+  display: none !important;
+}
+
+/* Center the title block inside the container (now unaffected by the logo) */
+.site-title {
+  margin: 10px auto 0 auto;    /* center horizontally in the container */
+  text-align: center;
+  max-width: calc(var(--container-max) - 120px); /* keep some breathing room */
+  padding-top: 6px;
+}
+
+/* Slightly reduce sizes so the centered layout breathes well */
+.site-title .school-af {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 56px;   /* you can tune higher/lower */
+  margin: 0;
+  line-height: 1;
+  color: #fff;
+}
+.site-title .school-en {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  color: var(--vp-yellow);
+  margin-top: 6px;
+}
+
+/* Tagline */
+.site-title .tagline {
+  display:block;
+  margin-top:10px;
+  font-size:14px;
+  color: rgba(255,255,255,0.9);
+}
+
+/* NAV row: center links via flexbox and reserve right padding for the pill */
+.main-nav {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;      /* keeps links centered in the container */
+  align-items: center;
+  gap: 24px;
+  padding: 12px 24px 14px 24px;
+  position: relative;           /* anchor for the absolute pill */
+  /* reserve space on the right so the centered group does not overlap the pill */
+  padding-right: 180px;         /* adjust if your pill size changes */
+}
+
+/* nav links styling (links are direct children of nav) */
+.main-nav > a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 20px;
+  margin: 0 12px;
+  padding: 6px 0;
+}
+
+/* Pin the Kontak Ons pill to the right edge of the container */
+.main-nav .btn-yellow {
+  position: absolute;
+  right: 0;                      /* right edge inside the container */
+  top: 50%;
+  transform: translateY(-50%);   /* vertically center the pill in nav row */
+  background: var(--vp-yellow);
+  color: var(--vp-blue);
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 900;
+  font-size: 18px;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.06);
+  text-decoration: none;
+  white-space: nowrap;
+  z-index: 5;
+}
+
+/* Header bottom thin divider across full width */
+.header .header-bottom-line {
+  height: 6px;
+  background: var(--vp-yellow);
+  width: 100%;
+  margin-top: 0;
+}
+
+/* small responsive safety (won't break desktop look) */
+@media (max-width: 1280px) {
+  .header .header-top img.logo { height: 160px; }
+  .site-title .school-af { font-size: 48px; }
+  .site-title .school-en { font-size: 32px; }
+  .main-nav { padding-right: 160px; }
+  .main-nav .btn-yellow { padding: 8px 14px; font-size: 16px; }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
