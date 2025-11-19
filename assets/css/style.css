@@ -362,6 +362,168 @@ nav .btn-yellow{
   nav .btn-yellow{right:18px}
 }
 
+/* =========================
+  Header CSS for the provided index.html
+  (paste this at the end of assets/css/style.css)
+   ========================= */
+
+:root{
+  --vp-blue: #131147;
+  --vp-yellow: #F7F70E;
+  --container-max: 1100px; /* must match your .container max-width */
+}
+
+/* Header shell */
+.header {
+  background: var(--vp-blue);
+  color: #fff;
+  position: relative;
+  border-bottom: 0; /* header-bottom-line handles divider */
+}
+
+/* Header top area: left logo | centered titles | spacer */
+.header .header-top {
+  display: grid;
+  grid-template-columns: auto 1fr 220px; /* spacer width matches logo visual space */
+  align-items: start;
+  gap: 18px;
+  padding: 18px 24px 8px 24px; /* top/right/bottom/left */
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+/* Crest/logo (left) */
+.header .header-top img.logo {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  height: 220px;        /* tuned to match the screenshot; change to 200/240 to taste */
+  width: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0;
+  align-self: start;
+}
+
+/* The spacer (right of title) - keeps the title centered visually */
+.header .header-top .logo-spacer {
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+  width: 220px;         /* same width used in grid-template-columns */
+  height: 1px;
+  pointer-events: none;
+  visibility: hidden;   /* occupies space but doesn't show */
+}
+
+/* Title block (center column) */
+.site-title {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  text-align: center;
+  padding-top: 12px;
+  min-width: 0;
+}
+
+/* Big Afrikaans line */
+.site-title .school-af {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 64px;    /* tuned to match screenshot */
+  margin: 0;
+  line-height: 0.98;
+  color: #fff;
+  letter-spacing: -1px;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.12);
+}
+
+/* English line (yellow) */
+.site-title .school-en {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 42px;
+  color: var(--vp-yellow);
+  margin: 6px 0 0 0;
+  line-height: 1;
+}
+
+/* Tagline below titles */
+.site-title .tagline {
+  display:block;
+  margin-top: 10px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.9);
+  font-weight: 400;
+}
+
+/* NAV (row below the titles) */
+.main-nav {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;  /* centers all plain links inside nav */
+  align-items: center;
+  gap: 24px;
+  padding: 18px 24px 14px 24px;
+  position: relative;       /* for absolute positioning of .btn-yellow */
+}
+
+/* nav links (you have links directly inside nav) */
+.main-nav > a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 20px;
+  margin: 0 12px;
+  padding: 6px 0;
+}
+
+/* Kontak Ons pill pinned to the right edge of the content column */
+.main-nav .btn-yellow {
+  position: absolute;
+  right: calc((100% - var(--container-max)) / 2 + 20px);
+  bottom: 8px;
+  background: var(--vp-yellow);
+  color: var(--vp-blue);
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 900;
+  font-size: 18px;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.06);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Thin yellow divider full width under header (outside container) */
+.header .header-bottom-line {
+  height: 6px;
+  background: var(--vp-yellow);
+  width: 100%;
+  margin-top: 0;
+}
+
+/* ===== Minor responsive safety (won't change desktop look) ===== */
+@media (max-width: 1280px) {
+  .header .header-top img.logo { height: 200px; }
+  .site-title .school-af { font-size: 56px; }
+  .site-title .school-en { font-size: 36px; }
+  .header .header-top { grid-template-columns: auto 1fr 200px; }
+  .main-nav .btn-yellow { right: calc((100% - var(--container-max)) / 2 + 14px); padding: 8px 12px; font-size: 16px; }
+}
+
+@media (max-width: 900px) {
+  /* graceful fallback for smaller viewports, you said desktop-only so these are conservative */
+  .header .header-top img.logo { height: 140px; }
+  .site-title .school-af { font-size: 34px; }
+  .site-title .school-en { font-size: 20px; color: var(--vp-yellow); }
+  .header .header-top { grid-template-columns: auto 1fr 140px; padding-left:16px; padding-right:16px;}
+  .main-nav { padding-left:16px; padding-right:16px; }
+  .main-nav .btn-yellow { position: static; margin-left: 16px; transform:none; }
+}
+
+/* Accessibility - reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
 
 @media(max-width:1200px){
   .header img.logo{height:150px}
