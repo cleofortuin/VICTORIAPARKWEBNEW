@@ -264,15 +264,18 @@ html,body{
 }
 
 .staff-photo {
-  width: 280px;
-  height: 280px;
+  width: 260px;
+  height: 260px;
   border-radius: 50%;
   object-fit: cover;
-  margin: 16px auto;
+  object-position: top center; /* <- moves the crop upward */
   display: block;
-  border: 6px solid #f2f2f2;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  margin: 0 auto 8px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+  border: 6px solid #ffffff;
+  background: #ffffff;
 }
+
 
 /* ---------------------- */
 /* STAFF PAGE STYLING     */
