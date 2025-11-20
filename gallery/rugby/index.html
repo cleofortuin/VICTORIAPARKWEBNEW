@@ -299,15 +299,19 @@ lightboxImg.addEventListener('click', (e) => {
   e.stopPropagation();
 });
 
-/* Keyboard: only allow Escape to close (no arrow-key image changes) */
+// Keyboard: allow Escape to close and Arrow keys to navigate
 document.addEventListener('keydown', (e) => {
   if (lightbox.style.display === 'flex') {
     if (e.key === 'Escape') {
       closeLightbox();
     }
-    // prevent left/right arrow default actions so they don't accidentally scroll page
-    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+    if (e.key === 'ArrowRight') {
       e.preventDefault();
+      nextImage();
+    }
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      prevImage();
     }
   }
 });
