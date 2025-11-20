@@ -259,6 +259,9 @@ html,body{
   padding-right: 0 !important;
 }
 
+.logo-link {
+  cursor: pointer;
+}
 
 
 
