@@ -131,6 +131,7 @@ let counter = document.getElementById('counter');
 
 let currentIndex = 0;
 
+// Open image when clicked
 images.forEach((img, index) => {
   img.addEventListener('click', () => {
     currentIndex = index;
@@ -144,14 +145,51 @@ function showImage() {
   counter.innerText = `${currentIndex + 1} van ${images.length}`;
 }
 
+// Next image
+function nextImage() {
+  currentIndex = (currentIndex + 1) % images.length;
+  showImage();
+}
+
+// Previous image
+function prevImage() {
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  showImage();
+}
+
+// Close lightbox
 function closeLightbox() {
   lightbox.style.display = 'none';
 }
 
+// Click edges of screen
 lightbox.addEventListener('click', (e) => {
-  if (e.target === lightbox) closeLightbox();
+  let width = window.innerWidth;
+
+  // Click left side -> previous
+  if (e.clientX < width * 0.25) {
+    prevImage();
+  }
+  // Click right side -> next
+  else if (e.clientX > width * 0.75) {
+    nextImage();
+  }
+  // Click center area -> close
+  else {
+    closeLightbox();
+  }
+});
+
+// Keyboard left/right arrows + ESC
+document.addEventListener('keydown', (e) => {
+  if (lightbox.style.display === 'flex') {
+    if (e.key === 'ArrowRight') nextImage();
+    if (e.key === 'ArrowLeft') prevImage();
+    if (e.key === 'Escape') closeLightbox();
+  }
 });
 </script>
+
 
 </body>
 </html>
