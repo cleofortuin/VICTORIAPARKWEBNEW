@@ -2,42 +2,74 @@
 <html lang="af">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Rugby Gallery - Victoriapark Primêr</title>
-
-<!-- Use correct CSS path -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Derby 2025 - Galery</title>
 <link rel="stylesheet" href="../../assets/css/style.css">
 
+<!-- Gallery Grid Styling -->
 <style>
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 16px;
-  margin-top: 20px;
+  margin-top: 24px;
 }
+
 .gallery-grid img {
   width: 100%;
   height: 240px;
   object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform .2s ease;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.03);
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 80%;
   border-radius: 8px;
 }
-h2.gallery-title {
-  text-align: center;
-  margin-top: 30px;
-  font-size: 2.2rem;
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 40px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.counter {
+  position: absolute;
+  bottom: 30px;
+  font-size: 18px;
+  color: #fff;
 }
 </style>
 </head>
-
 <body>
 
-<!-- HEADER (same as main site) -->
 <header class="header">
   <div class="container">
-
     <div class="header-top">
       <a href="../../index.html" class="logo-link">
-        <img src="../../assets/images/logo.png" alt="Victoria Park Logo" class="logo">
+        <img src="../../assets/images/logo.png" class="logo" alt="Logo">
       </a>
 
       <div class="site-title">
@@ -46,40 +78,80 @@ h2.gallery-title {
         <p class="tagline">Vonk die potensiaal deur uitnemendheid, waardes en geleenthede.</p>
       </div>
 
-      <div class="logo-spacer" aria-hidden="true"></div>
+      <div class="logo-spacer"></div>
     </div>
-
-    <nav class="main-nav">
-      <a href="../../index.html">Tuis</a>
-      <a href="../../about.html">Oor Ons</a>
-      <a href="../../academics.html">Akademie</a>
-      <a href="../../staff.html">Ons Personeel</a>
-      <a href="../../sports.html">Sport & Kultuur</a>
-      <a href="../../gallery.html">Galery</a>
-      <a href="../../news.html">Nuus</a>
-      <a class="btn-yellow" href="../../contact.html">Kontak Ons</a>
-    </nav>
-
   </div>
+
   <div class="header-bottom-line"></div>
 </header>
 
-<!-- PAGE TITLE -->
-<h2 class="gallery-title">Rugby Galery</h2>
+<main class="container">
+  <h2>Derby 2025</h2>
+  <p>Foto's geneem tydens Derby.</p>
 
-<!-- MAIN IMAGE GRID -->
-<main class="gallery-grid">
+  <!-- IMAGE GRID -->
+  <div class="gallery-grid">
 
-  <!-- ADD EACH IMAGE HERE -->
-  <img src="IMG_6103.jpg" alt="Rugby Photo">
+    <!-- AUTO-LIST IMAGES HERE -->
+    <img src="IMG_6075-min.jpg" alt="">
+    <img src="IMG_6076-min.jpg" alt="">
+    <img src="IMG_6078-min.jpg" alt="">
+    <img src="IMG_6079-min.jpg" alt="">
+    <img src="IMG_6080-min.jpg" alt="">
+    <img src="IMG_6082-min.jpg" alt="">
+    <img src="IMG_6085-min.jpg" alt="">
+    <img src="IMG_6086-min.jpg" alt="">
+    <img src="IMG_6091-min.jpg" alt="">
+    <img src="IMG_6097-min.jpg" alt="">
+    <img src="IMG_6099-min.jpg" alt="">
 
+    <!-- The ones without -min in the name -->
+    <img src="IMG_6103.jpg" alt="">
+    <img src="IMG_6112-min.jpg" alt="">
+    <img src="IMG_6114-min.jpg" alt="">
+    <img src="IMG_6122-min.jpg" alt="">
+    <img src="IMG_6123-min.jpg" alt="">
+    <img src="IMG_6128-min.jpg" alt="">
+
+  </div>
 </main>
 
-<footer class="footer">
-  <div class="container">
-    <p>© 2025 Victoriapark Primêr | Victoria Park Primary. Alle regte voorbehou.</p>
-  </div>
-</footer>
+<!-- LIGHTBOX POPUP -->
+<div class="lightbox" id="lightbox">
+  <span class="close-btn" onclick="closeLightbox()">×</span>
+  <img id="lightbox-img">
+  <div class="counter" id="counter"></div>
+</div>
+
+<script>
+let images = Array.from(document.querySelectorAll('.gallery-grid img'));
+let lightbox = document.getElementById('lightbox');
+let lightboxImg = document.getElementById('lightbox-img');
+let counter = document.getElementById('counter');
+
+let currentIndex = 0;
+
+images.forEach((img, index) => {
+  img.addEventListener('click', () => {
+    currentIndex = index;
+    showImage();
+  });
+});
+
+function showImage() {
+  lightbox.style.display = 'flex';
+  lightboxImg.src = images[currentIndex].src;
+  counter.innerText = `${currentIndex + 1} van ${images.length}`;
+}
+
+function closeLightbox() {
+  lightbox.style.display = 'none';
+}
+
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox) closeLightbox();
+});
+</script>
 
 </body>
 </html>
