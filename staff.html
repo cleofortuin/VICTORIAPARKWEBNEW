@@ -1,33 +1,28 @@
-
 <!doctype html>
 <html lang="af">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ons Personeel - Victoriapark Primêr</title>
-<link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ons Personeel - Victoriapark Primêr</title>
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 <header class="header">
   <div class="container">
-    <!-- top row: left logo | centered bilingual title | spacer the same width as logo -->
     <div class="header-top">
+      <a href="index.html" class="logo-link">
+        <img src="assets/images/logo.png" alt="Victoria Park Logo" class="logo">
+      </a>
 
-  <a href="index.html" class="logo-link">
-    <img src="assets/images/logo.png" alt="Victoria Park Logo" class="logo">
-  </a>
+      <div class="site-title">
+        <h1 class="school-af">Victoriapark Primêr</h1>
+        <h2 class="school-en">Victoria Park Primary</h2>
+        <p class="tagline">Vonk die potensiaal deur uitnemendheid, waardes en geleenthede.</p>
+      </div>
 
-  <div class="site-title">
-    <h1 class="school-af">Victoriapark Primêr</h1>
-    <h2 class="school-en">Victoria Park Primary</h2>
-    <p class="tagline">Vonk die potensiaal deur uitnemendheid, waardes en geleenthede.</p>
-  </div>
+      <div class="logo-spacer" aria-hidden="true"></div>
+    </div>
 
-  <div class="logo-spacer" aria-hidden="true"></div>
-</div>
-
-
-    <!-- nav row: centered items, with Kontakt pinned at the far right -->
     <nav class="main-nav" role="navigation" aria-label="Main navigation">
       <a href="index.html">Tuis</a>
       <a href="about.html">Oor Ons</a>
@@ -36,43 +31,41 @@
       <a href="sports.html">Sport &amp; Kultuur</a>
       <a href="gallery.html">Galery</a>
       <a href="news.html">Nuus</a>
-
-      <!-- this button will be visually pinned to the right -->
       <a class="btn-yellow" href="contact.html">Kontak Ons</a>
     </nav>
   </div>
 
-  <!-- thin yellow divider under the header -->
   <div class="header-bottom-line" aria-hidden="true"></div>
 </header>
 
-
 <main class="container">
-  <!-- Leadership section -->
-<section aria-labelledby="leadership" style="margin: 18px 0 0;">
-  <h2 id="leadership" style="margin-bottom:18px;">Leierskap</h2>
 
-  <div class="leaders">
-    <!-- Principal -->
-    <div class="leader">
-      <h3>Skoolhoof</h3>
-      <p>Hildegard M Lombard</p>
-      <img src="assets/images/staff/410156690_7630137223667642_4318337295859097017_n.jpg"
-           alt="Hildegard M Lombard"
-           class="staff-photo">
+  <!-- Leadership block -->
+  <section aria-labelledby="leadership" class="section--leadership" style="margin:18px 0;">
+    <h2 id="leadership" class="section-title" style="margin-bottom:18px;">Leierskap</h2>
+
+    <div class="leaders">
+      <!-- Principal -->
+      <div class="leader">
+        <h3>Skoolhoof</h3>
+        <p class="leader-name">Hildegard M Lombard</p>
+        <img src="assets/images/staff/410156690_7630137223667642_4318337295859097017_n.jpg"
+             alt="Hildegard M Lombard"
+             class="staff-photo">
+      </div>
+
+      <!-- Deputy -->
+      <div class="leader">
+        <h3>Adjunkhoof</h3>
+        <p class="leader-name">Lionell J. Phillips</p>
+        <img src="assets/images/staff/IMG_7012.JPG"
+             alt="Lionell J. Phillips"
+             class="staff-photo">
+      </div>
     </div>
+  </section>
 
-    <!-- Deputy -->
-    <div class="leader">
-      <h3>Adjunkhoof</h3>
-      <p>Lionel J. Phillips</p>
-     <img src="assets/images/staff/IMG_7012.JPG"
-     alt="Lionell J. Phillips"
-     class="staff-photo staff-photo-top">
-    </div>
-  </div>
-</section>
-
+  <!-- Teachers -->
   <section class="section" style="margin-top:12px">
     <h3>Onderwysers</h3>
     <div class="staff-grid">
@@ -80,14 +73,18 @@
       <div class="staff-card"><img src="assets/images/logo.png" alt=""><p>Grade 1 - __________________</p></div>
       <div class="staff-card"><img src="assets/images/logo.png" alt=""><p>Grade 2 - __________________</p></div>
       <div class="staff-card"><img src="assets/images/logo.png" alt=""><p>Grade 3 - __________________</p></div>
+      <!-- add more staff-card entries as needed -->
     </div>
   </section>
 
+  <!-- Support staff -->
   <section class="section" style="margin-top:12px">
     <h3>Ondersteuningspersoneel</h3>
     <p>Administrasie, assistente en tuinpersoneel: __________________</p>
   </section>
+
 </main>
+
 <footer class="footer">
   <div class="container">
     <p>© 2025 Victoriapark Primêr | Victoria Park Primary. Alle regte voorbehou.</p>
