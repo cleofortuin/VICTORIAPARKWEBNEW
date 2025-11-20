@@ -67,7 +67,7 @@ html,body{
 /* Crest/logo - absolutely placed inside the container on the left */
 .header .header-top img.logo {
   position: absolute;
-  left: 30;                          /* align to left edge of container */
+  left: 30px;                          /* align to left edge of container */
   top: 6px;
   height: 200px;                    /* tuned default: change to 180/220 if you prefer */
   width: auto;
