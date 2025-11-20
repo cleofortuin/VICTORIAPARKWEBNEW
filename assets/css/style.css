@@ -231,3 +231,36 @@ html,body{
 /* ============================================================
    End of stylesheet
    ============================================================ */
+/* === FIX: Kontak Ons sits next to Nuus === */
+
+/* Remove absolute positioning and make it a normal nav link */
+.main-nav .btn-yellow {
+  position: static !important;
+  transform: none !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: auto !important;
+
+  /* Keep button styling */
+  background: var(--vp-yellow);
+  color: var(--vp-blue);
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 900;
+  font-size: 18px;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.10);
+  white-space: nowrap;
+  margin-left: 20px;  /* small space between Nuus and the pill */
+}
+
+/* Ensure nav links stay centered even with pill included */
+.main-nav {
+  justify-content: center !important;
+  padding-right: 0 !important;
+}
+
+
+
+
+
+
