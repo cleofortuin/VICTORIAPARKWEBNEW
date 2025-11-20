@@ -32,35 +32,35 @@
 .lightbox {
   display: none;
   position: fixed;
-  inset: 0; /* top:0; right:0; bottom:0; left:0; */
+  inset: 0;
   background: rgba(0,0,0,0.9);
   justify-content: center;
   align-items: center;
   z-index: 9999;
 }
 
-/* central image container so clicks outside image close lightbox easily */
+/* central image container */
 .lightbox-inner {
   position: relative;
-  max-width: 70vw;   /* control image box size */
+  max-width: 70vw;
   max-height: 70vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* image styling */
+/* lightbox image */
 .lightbox img {
   max-width: 100%;
   max-height: 100%;
   border-radius: 8px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  object-fit: contain;
   user-select: none;
   -webkit-user-drag: none;
-  object-fit: contain;
 }
 
-/* CLOSE BUTTON - moved outside the image container and fixed to viewport */
+/* Close button */
 .close-btn {
   position: fixed;
   top: 18px;
@@ -70,13 +70,12 @@
   background: rgba(0,0,0,0.45);
   border: none;
   cursor: pointer;
-  z-index: 10050; /* above arrows and image */
-  line-height: 1;
   padding: 8px 12px;
   border-radius: 999px;
+  z-index: 10050;
 }
 
-/* Arrow buttons (kept near the image box) */
+/* Arrow buttons */
 .arrow-btn {
   position: absolute;
   top: 50%;
@@ -93,30 +92,25 @@
   align-items: center;
   justify-content: center;
   z-index: 10005;
-  user-select: none;
 }
 
-.arrow-btn:focus { outline: 2px solid rgba(255,255,255,0.3); }
-
-/* place arrows just outside the image box */
 .arrow-left { left: -70px; }
 .arrow-right { right: -70px; }
 
-/* Counter */
 .counter {
   position: absolute;
   bottom: -44px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 16px;
-  color: #fff;
-  z-index: 10010;
   background: rgba(0,0,0,0.35);
   padding: 6px 10px;
   border-radius: 6px;
+  color: #fff;
+  font-size: 16px;
+  z-index: 10010;
 }
 
-/* Responsive adjustments */
+/* Responsive */
 @media (max-width: 900px) {
   .lightbox-inner { max-width: 85vw; max-height: 75vh; }
   .arrow-left { left: -50px; }
@@ -126,23 +120,12 @@
 @media (max-width: 640px) {
   .arrow-left { left: 8px; }
   .arrow-right { right: 8px; }
-  .arrow-btn { width:48px; height:48px; font-size:22px; }
-  .close-btn { right: 12px; top: 12px; font-size:32px; padding:6px 10px; }
-  .counter { bottom: -36px; font-size:14px; }
+  .arrow-btn { width: 48px; height: 48px; font-size: 22px; }
+  .close-btn { right: 12px; top: 12px; font-size: 32px; padding: 6px 10px; }
+  .counter { bottom: -36px; font-size: 14px; }
 }
-
-/* Optional: ensure main-nav looks like your homepage if not already in style.css */
-.main-nav {
-  display:flex;
-  gap:16px;
-  justify-content:center;
-  align-items:center;
-  flex-wrap:wrap;
-  margin-top:12px;
-}
-.main-nav a { text-decoration:none; color:inherit; padding:6px 8px; }
-.main-nav .btn-yellow { margin-left: auto; } /* if your CSS pins it differently, this won't break */
 </style>
+
 </head>
 <body>
 
