@@ -4,7 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rugby Gallery - Victoriapark Primêr</title>
+
+<!-- Use correct CSS path -->
 <link rel="stylesheet" href="../../assets/css/style.css">
+
 <style>
 .gallery-grid {
   display: grid;
@@ -18,16 +21,65 @@
   object-fit: cover;
   border-radius: 8px;
 }
+h2.gallery-title {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 2.2rem;
+}
 </style>
 </head>
+
 <body>
 
+<!-- HEADER (same as main site) -->
 <header class="header">
   <div class="container">
+
     <div class="header-top">
       <a href="../../index.html" class="logo-link">
-        <img src="../../assets/images/logo.png" class="logo" alt="Logo">
+        <img src="../../assets/images/logo.png" alt="Victoria Park Logo" class="logo">
       </a>
 
-      <div class="site
+      <div class="site-title">
+        <h1 class="school-af">Victoriapark Primêr</h1>
+        <h2 class="school-en">Victoria Park Primary</h2>
+        <p class="tagline">Vonk die potensiaal deur uitnemendheid, waardes en geleenthede.</p>
+      </div>
 
+      <div class="logo-spacer" aria-hidden="true"></div>
+    </div>
+
+    <nav class="main-nav">
+      <a href="../../index.html">Tuis</a>
+      <a href="../../about.html">Oor Ons</a>
+      <a href="../../academics.html">Akademie</a>
+      <a href="../../staff.html">Ons Personeel</a>
+      <a href="../../sports.html">Sport & Kultuur</a>
+      <a href="../../gallery.html">Galery</a>
+      <a href="../../news.html">Nuus</a>
+      <a class="btn-yellow" href="../../contact.html">Kontak Ons</a>
+    </nav>
+
+  </div>
+  <div class="header-bottom-line"></div>
+</header>
+
+<!-- PAGE TITLE -->
+<h2 class="gallery-title">Rugby Galery</h2>
+
+<!-- MAIN IMAGE GRID -->
+<main class="gallery-grid">
+
+  <!-- ADD EACH IMAGE HERE -->
+  <img src="IMG_6103.jpg" alt="Rugby Photo">
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>© 2025 Victoriapark Primêr | Victoria Park Primary. Alle regte voorbehou.</p>
+  </div>
+</footer>
+
+</body>
+</html>
