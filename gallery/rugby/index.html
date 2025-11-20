@@ -130,6 +130,18 @@
   .close-btn { right: 12px; top: 12px; font-size:32px; padding:6px 10px; }
   .counter { bottom: -36px; font-size:14px; }
 }
+
+/* Optional: ensure main-nav looks like your homepage if not already in style.css */
+.main-nav {
+  display:flex;
+  gap:16px;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  margin-top:12px;
+}
+.main-nav a { text-decoration:none; color:inherit; padding:6px 8px; }
+.main-nav .btn-yellow { margin-left: auto; } /* if your CSS pins it differently, this won't break */
 </style>
 </head>
 <body>
@@ -149,6 +161,20 @@
 
       <div class="logo-spacer"></div>
     </div>
+
+    <!-- ADD NAVIGATION (adjusted paths for gallery folder) -->
+    <nav class="main-nav" role="navigation" aria-label="Main navigation">
+      <a href="../../index.html">Tuis</a>
+      <a href="../../about.html">Oor Ons</a>
+      <a href="../../academics.html">Akademie</a>
+      <a href="../../staff.html">Ons Personeel</a>
+      <a href="../../sports.html">Sport &amp; Kultuur</a>
+      <a href="../../gallery.html">Galery</a>
+      <a href="../../news.html">Nuus</a>
+
+      <!-- this button will be visually pinned to the right by your stylesheet -->
+      <a class="btn-yellow" href="../../contact.html">Kontak Ons</a>
+    </nav>
   </div>
 
   <div class="header-bottom-line"></div>
