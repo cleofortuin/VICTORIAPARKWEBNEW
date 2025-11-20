@@ -263,6 +263,16 @@ html,body{
   cursor: pointer;
 }
 
+.staff-photo {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 16px auto;
+  display: block;
+  border: 6px solid #f2f2f2;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
 
 
 
